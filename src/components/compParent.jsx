@@ -10,6 +10,14 @@ class CompParent extends Component {
       { id: 4, value: 0 },
     ],
   };
+  handelIncrement = (counter) => {
+    console.log(counter);
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value++;
+    this.setState({ counters });
+  };
 
   handelDelete = (counterId) => {
     console.log("Handelelte event called", counterId);
@@ -34,6 +42,7 @@ class CompParent extends Component {
             key={counter.id}
             value={counter.value}
             onDelete={this.handelDelete}
+            onIncrement={this.handelIncrement}
             counter={counter}
           />
         ))}
